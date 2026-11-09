@@ -1,208 +1,210 @@
-import { useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
-  ArrowDown,
   ArrowRight,
   BookOpen,
   Check,
-  GraduationCap,
-  Heart,
+  ChevronRight,
+  Copy,
+  HandCoins,
   HeartHandshake,
+  Landmark,
+  Mail,
+  MapPin,
   Menu,
+  Phone,
   ShieldCheck,
   Sparkles,
   Users,
   X,
 } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import image1 from '../externalsrc/1.jpeg'
-import image2 from '../externalsrc/2.jpeg'
-import image3 from '../externalsrc/3.jpeg'
-import image4 from '../externalsrc/4.jpeg'
-import image5 from '../externalsrc/5.jpeg'
-import image6 from '../externalsrc/6.jpeg'
-import image7 from '../externalsrc/7.jpeg'
-import image8 from '../externalsrc/8.jpeg'
+import ekjut1 from './assets/ekjut/WhatsApp Image 2026-11-09 at 20.22.40 (1).jpeg'
+import ekjut2 from './assets/ekjut/WhatsApp Image 2026-11-09 at 20.22.40.jpeg'
+import ekjut3 from './assets/ekjut/WhatsApp Image 2026-11-09 at 20.22.41 (1).jpeg'
+import ekjut4 from './assets/ekjut/WhatsApp Image 2026-11-09 at 20.22.41.jpeg'
+import ekjut5 from './assets/ekjut/WhatsApp Image 2026-11-09 at 20.22.42.jpeg'
 import './App.css'
 
-const navigation = [
-  ['About Us', '#about'],
-  ['Our Impact', '#impact'],
-  ['What We Do', '#purpose'],
-  ['Financial Need', '#financial-need'],
-  ['Gallery', '#gallery'],
-  ['Contact', '#contact'],
+const navItems = [
+  { label: 'About Us', href: '#about' },
+  { label: 'Initiatives / Our Work', href: '#initiatives' },
+  { label: 'Donate Us', href: '#donate' },
+  { label: 'Contact Us', href: '#contact' },
 ]
 
-const photos = [image1, image2, image3, image4, image5, image6, image7, image8]
+const milestones = [
+  { year: '2003', title: 'A hopeful beginning', text: 'Ekjut started with a small group of young people determined to bring out-of-school children back into education.' },
+  { year: 'Early years', title: 'Expanding access', text: 'The work began with children who wanted to continue their formal education but lacked support and opportunity.' },
+  { year: 'Today', title: 'A broader mission', text: 'Ekjut has grown into a movement addressing child protection, library access, women’s empowerment, and skill development.' },
+]
+
+const initiatives = [
+  {
+    title: 'Ekjut Children Resource Center',
+    kicker: 'Child education',
+    theme: 'green',
+    image: ekjut2,
+    summary:
+      'Ekjut began by helping children who were not attending school reconnect with formal education and build a future rooted in dignity and opportunity.',
+    points: [
+      'Bringing out-of-school children into mainstream education.',
+      'Supporting children from economically disadvantaged communities.',
+      'Offering guidance and encouragement to continue learning with confidence.',
+    ],
+  },
+  {
+    title: 'Mobile Library – Aishbagh',
+    kicker: 'Reading & learning',
+    theme: 'gold',
+    image: ekjut3,
+    summary:
+      'This initiative expands access to learning in slum communities by bringing library experiences, tuition support, and joyful educational engagement to children in Aishbagh and Rahul Nagar.',
+    points: [
+      'Approximately 250 children have been linked with the initiative.',
+      'Library sessions, English tuition, language development, and summer camps.',
+      'Exposure visits, Bal Sabha, theatre, and other community-based learning activities.',
+    ],
+  },
+  {
+    title: 'Child Protection – Hamidia Hospital',
+    kicker: 'Safe spaces',
+    theme: 'blue',
+    image: ekjut4,
+    summary:
+      'Ekjut works with children accompanying parents in the hospital by creating a safe, structured, and caring environment where they can learn, play, and participate.',
+    points: [
+      'Non-formal education activities within Hamidia Hospital.',
+      'Hygiene, cleanliness, and health awareness sessions.',
+      'Storytelling, drawing, arts and crafts, library access, and theatre-based engagement.',
+    ],
+  },
+  {
+    title: 'Skill Based Training Programmes',
+    kicker: 'Women’s empowerment',
+    theme: 'pink',
+    image: ekjut1,
+    summary:
+      'The organization supports women from slum communities through practical skill-based training that helps build confidence, income pathways, and long-term independence.',
+    points: [
+      'Vocational and skill-based training for economic independence.',
+      'Employment generation and sustainable livelihoods.',
+      'Social and economic upliftment for women and their families.',
+    ],
+  },
+  {
+    title: 'Formal School – Pathfinder',
+    kicker: 'Quality education',
+    theme: 'purple',
+    image: ekjut5,
+    summary:
+      'Pathfinder reflects EKJUT’s vision of formal, accessible education for underprivileged children in a supportive and inclusive environment.',
+    points: [
+      'Inclusive learning designed around children’s needs.',
+      'Supportive education that nurtures confidence and growth.',
+      'A long-term pathway toward brighter opportunities and holistic development.',
+    ],
+  },
+]
 
 const stats = [
-  { value: '350+', label: 'registered students', icon: Users },
-  { value: '140–160', label: 'approx. daily attendance', icon: HeartHandshake },
-  { value: '10', label: 'dedicated teachers', icon: GraduationCap },
-  { value: 'Nursery–VIII', label: 'classes offered', icon: BookOpen },
+  { label: 'Children supported through educational initiatives', value: '200+' },
+  { label: 'Years of community action', value: '20+' },
+  { label: 'Women empowered through skill-based training', value: '100+' },
+  { label: 'Core focus areas', value: '4' },
 ]
 
-const pillars = [
-  {
-    number: '01',
-    title: 'Education',
-    text: 'Accessible English-medium learning that helps children discover what they can do.',
-    icon: BookOpen,
-  },
-  {
-    number: '02',
-    title: 'Dignity',
-    text: 'A caring school community where every child is seen, heard, and encouraged.',
-    icon: Heart,
-  },
-  {
-    number: '03',
-    title: 'Opportunity',
-    text: 'A stronger foundation for children to imagine a future beyond the limits of poverty.',
-    icon: Sparkles,
-  },
-]
-
-const studentSupport = [
-  {
-    title: 'Quality education',
-    text: 'English-medium learning and foundational academic support.',
-    icon: BookOpen,
-  },
-  {
-    title: 'Learning materials',
-    text: 'Syllabi, stationery, classroom supplies, and creative materials for learning.',
-    icon: BookOpen,
-  },
-  {
-    title: 'Uniforms',
-    text: 'Helping children come to school with dignity and confidence.',
-    icon: GraduationCap,
-  },
-  {
-    title: 'Student healthcare',
-    text: 'Health check-ups, including eye, dental, and haemoglobin screening initiatives.',
-    icon: Heart,
-  },
-  {
-    title: 'Activities',
-    text: 'Creative, cultural, sports, and educational experiences.',
-    icon: Sparkles,
-  },
-  {
-    title: 'A safe school',
-    text: 'Maintenance and essential school operations for a safe learning environment.',
-    icon: ShieldCheck,
-  },
-]
-
-const monthlyExpenses = [
-  ['Teachers (10)', '₹65,000'],
-  ['School buses (2)', '₹4,700'],
-  ['Sweeper (1)', '₹2,500'],
-  ['Electricity and water', '₹2,500'],
-  ['Cleaning supplies', '₹1,200'],
-  ['Chalk, pens, pencils, colours, etc.', '₹950'],
-]
-
-const annualExpenses = [
-  ['Student syllabus / educational material', '₹2,45,000'],
-  ['Uniforms', '₹48,000'],
-  ['Office expenses', '₹20,000'],
-  ['Stationery', '₹15,000–₹20,000'],
-  ['Lease', '₹12,500'],
-  ['Activities / educational outings', '₹10,000'],
-]
-
-const sponsorshipOptions = [
-  { amount: '₹5,000', purpose: 'Learning and educational support', icon: BookOpen },
-  { amount: '₹10,000', purpose: 'Materials, uniforms, and activities', icon: GraduationCap },
-  { amount: '₹25,000', purpose: 'Support for a group of students', icon: Users },
-  { amount: '₹50,000', purpose: 'Classroom and student-support needs', icon: ShieldCheck },
-  { amount: '₹1,00,000', purpose: 'A significant contribution to annual needs', icon: Heart },
-  { amount: '₹2,00,000', purpose: 'Maintenance, healthcare, and activities', icon: Sparkles },
-]
-
-const beyondClassroom = [
-  {
-    title: 'School maintenance',
-    text: 'Furniture repairs, drainage cleaning, electrical and plumbing work, and general upkeep.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Student healthcare',
-    text: 'Health check-up camps, eye examinations, dental check-ups, and haemoglobin testing.',
-    icon: Heart,
-  },
-  {
-    title: 'National and cultural celebrations',
-    text: 'Independence Day, Republic Day, and educational or cultural celebrations.',
-    icon: Users,
-  },
-  {
-    title: 'Creative competitions',
-    text: 'Rangoli, Mehendi, fancy dress, art, and other activities.',
-    icon: Sparkles,
-  },
-  {
-    title: 'Prizes and recognition',
-    text: 'Certificates, prizes, and encouragement for participation and achievement.',
-    icon: GraduationCap,
-  },
+const bankDetails = [
+  ['Organization', 'EKJUT SOCIETY'],
+  ['Registration Number', 'IND/6784/13.03.2003'],
+  ['Bank', 'State Bank of India'],
+  ['Branch', 'Bhopal Main Branch, T.T. Nagar'],
+  ['Account Number', '10571048890'],
+  ['IFSC', 'SBIN0001308'],
+  ['80G exemption', 'Certificate no. AAATE2312F/10/14-15/S-0040/80G, dated 19-10-2015'],
 ]
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [sent, setSent] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm()
+  const [copied, setCopied] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
-  const onSubmit = () => {
-    setSent(true)
-    reset()
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const copyBankDetails = async () => {
+    const text = bankDetails
+      .map(([label, value]) => `${label}: ${value}`)
+      .join('\n')
+
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
+    } catch (error) {
+      setCopied(false)
+      console.error('Unable to copy bank details', error)
+    }
+  }
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
+
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
+    setSubmitted(true)
+    form.reset()
   }
 
   return (
-    <div className="site-shell">
-      <header className="site-header">
-        <nav className="nav-wrap" aria-label="Main navigation">
-          <a className="brand" href="#home" aria-label="Pathfinder School home">
-            <span className="brand-mark">P</span>
+    <div className="ekjut-shell">
+      <header className={`topbar ${scrolled ? 'topbar--solid' : ''}`}>
+        <div className="page-shell topbar-inner">
+          <a className="brand" href="#home" aria-label="Ekjut home">
+            <span className="brand-mark">E</span>
             <span className="brand-copy">
-              <strong>Pathfinder English Medium School</strong>
-              <small>An initiative of Ekjut Society</small>
+              <strong>EKJUT</strong>
+              <small>Empowering communities</small>
             </span>
           </a>
 
-          <div className="desktop-nav">
-            {navigation.map(([label, href]) => (
-              <a key={href} href={href}>{label}</a>
+          <nav className="desktop-nav" aria-label="Main navigation">
+            {navItems.map(({ label, href }) => (
+              <a key={label} href={href}>{label}</a>
             ))}
-            <a className="nav-cta" href="#sponsorship">Support our school <ArrowRight size={15} /></a>
-          </div>
+            <a className="nav-cta" href="#donate">
+              Donate Now
+              <ArrowRight size={15} />
+            </a>
+          </nav>
 
           <button
-            className="menu-toggle"
             type="button"
+            className="menu-toggle"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            {menuOpen ? <X size={21} /> : <Menu size={21} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-        </nav>
+        </div>
+
         {menuOpen && (
-          <div className="mobile-nav">
-            {navigation.map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+          <div className="mobile-menu">
+            {navItems.map(({ label, href }) => (
+              <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
             ))}
-            <a className="nav-cta" href="#sponsorship" onClick={() => setMenuOpen(false)}>
-              Support our school <ArrowRight size={15} />
+            <a className="nav-cta" href="#donate" onClick={() => setMenuOpen(false)}>
+              Donate Now
+              <ArrowRight size={15} />
             </a>
           </div>
         )}
@@ -210,341 +212,308 @@ function App() {
 
       <main>
         <section className="hero-section" id="home">
-          <div className="hero-grain" aria-hidden="true" />
-          <div className="hero-layout page-width">
+          <div className="page-shell hero-layout">
             <motion.div
               className="hero-copy"
-              initial={{ opacity: 0, y: 22 }}
+              initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65 }}
+              transition={{ duration: 0.7 }}
             >
-              <p className="eyebrow"><span /> An initiative of Ekjut Society</p>
-              <h1>Let&apos;s Give<br /><em>Education</em><br />a Purpose.</h1>
-              <p className="hero-description">
-                A school where children can learn, participate, build confidence, and imagine a future beyond the limits of poverty.
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                Social initiative for education and empowerment
+              </span>
+              <h1>
+                Empowering Lives Through <span>Education, Equality &amp; Opportunity.</span>
+              </h1>
+              <p className="lead">
+                Ekjut is a social initiative dedicated to bringing education, protection, and opportunities to underprivileged children and women. Through community-driven programmes, we strive to build a future where everyone has access to knowledge, dignity, and equal opportunities.
               </p>
               <div className="hero-actions">
-                <a className="button button-green" href="#about">Discover our mission <ArrowRight size={17} /></a>
-                <a className="button button-outline" href="#sponsorship">Support our school</a>
+                <a className="button button-primary" href="#initiatives">
+                  Explore Our Work
+                  <ArrowRight size={16} />
+                </a>
+                <a className="button button-secondary" href="#donate">
+                  Support Our Mission
+                </a>
               </div>
-              <div className="hero-location"><span /> BHEL, Govindpura · Bhopal, Madhya Pradesh</div>
+              <div className="hero-meta">
+                <span>
+                  <MapPin size={16} />
+                  Bhopal, Madhya Pradesh
+                </span>
+                <span>
+                  <HeartHandshake size={16} />
+                  Community-led change
+                </span>
+              </div>
             </motion.div>
 
             <motion.div
               className="hero-visual"
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.12 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <div className="hero-photo hero-photo-main">
-                <img src={image2} alt="Pathfinder school children and community" />
+              <div className="hero-image-frame">
+                <img src={ekjut2} alt="Children learning together in a community initiative" />
               </div>
-              <div className="hero-photo hero-photo-small">
-                <img src={image5} alt="A moment from the Pathfinder school community" />
+              <div className="floating-badge">
+                <strong>20+ years</strong>
+                <span>of education and community action</span>
               </div>
-              <div className="hero-photo hero-photo-stamp">
-                <img src={image7} alt="Learning at Pathfinder English Medium School" />
-              </div>
-              <div className="hero-stat">
-                <span className="hero-stat-icon"><Users size={20} /></span>
-                <span><strong>350+</strong><small>children registered</small></span>
-              </div>
-              <span className="hero-scribble" aria-hidden="true">A brighter<br />beginning</span>
             </motion.div>
           </div>
-          <a href="#impact" className="scroll-cue" aria-label="Scroll to school impact"><ArrowDown size={16} /></a>
         </section>
 
-        <section className="impact-section" id="impact">
-          <div className="page-width">
-            <div className="section-heading impact-heading">
-              <p className="eyebrow"><span /> A community moving forward</p>
-              <h2>Small beginnings.<br /><em>Big possibilities.</em></h2>
+        <section className="section about-section" id="about">
+          <div className="page-shell">
+            <div className="section-header narrow">
+              <span className="eyebrow eyebrow-alt">
+                <span className="eyebrow-dot" />
+                EKJUT / About Us
+              </span>
+              <h2>
+                A Small Beginning. <span>A Bigger Dream.</span>
+              </h2>
             </div>
-            <div className="stats-row">
-              {stats.map(({ value, label, icon: Icon }, index) => (
-                <motion.div
-                  className="stat-item"
-                  key={label}
-                  initial={{ opacity: 0, y: 18 }}
+
+            <div className="about-grid">
+              <div className="about-visual">
+                <img src={ekjut4} alt="Young learners participating in an EKJUT programme" />
+                <div className="photo-pill">Since 2003 • Bhopal</div>
+              </div>
+
+              <div className="about-copy">
+                <p>
+                  EKJUT began in 2003 with a group of young people who wanted to ensure that children who had dropped out of school could continue their education and gain a stronger footing in life.
+                </p>
+                <p>
+                  What started with five enthusiastic children has grown into a wider social initiative focused on education, child protection, mobile libraries, women’s empowerment, and skill development. The organization’s primary objective is to bring out-of-school children in and around Bhopal into the mainstream of education and create real opportunities for them to thrive.
+                </p>
+                <div className="quote-box">
+                  <span>Our philosophy</span>
+                  <strong>Empowerment, Knowledge and Justice with Uniformity and Togetherness.</strong>
+                </div>
+              </div>
+            </div>
+
+            <div className="timeline" aria-label="Ekjut journey timeline">
+              {milestones.map(({ year, title, text }) => (
+                <motion.article
+                  className="timeline-item"
+                  key={year}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.35 }}
-                  transition={{ duration: 0.45, delay: index * 0.08 }}
+                  transition={{ duration: 0.45 }}
                 >
-                  <span className="stat-icon"><Icon size={20} strokeWidth={1.7} /></span>
-                  <strong>{value}</strong>
-                  <span>{label}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="about-section section-pad" id="about">
-          <div className="page-width about-grid">
-            <div className="about-photo-wrap">
-              <img src={image4} alt="Children learning and taking part in school life" />
-              <div className="photo-caption"><span>01 / 08</span> Learning, together</div>
-              <span className="about-doodle" aria-hidden="true">made with care</span>
-            </div>
-            <div className="about-copy">
-              <p className="eyebrow"><span /> Why Pathfinder?</p>
-              <h2>Education, dignity and opportunity <em>for every child.</em></h2>
-              <p>
-                Pathfinder English Medium School is an initiative of Ekjut Society focused on providing accessible English-medium education to children from underserved communities.
-              </p>
-              <p>
-                We work to create a supportive place where children can learn, participate, build confidence, and prepare for a better future—regardless of the circumstances they were born into.
-              </p>
-              <div className="school-facts" aria-label="School facts">
-                <span><strong>Medium</strong>English</span>
-                <span><strong>Board</strong>Madhya Pradesh Board</span>
-                <span><strong>Classes</strong>Nursery–VIII</span>
-              </div>
-              <a className="text-link" href="#purpose">Explore our purpose <ArrowRight size={16} /></a>
-            </div>
-          </div>
-        </section>
-
-        <section className="purpose-section section-pad" id="purpose">
-          <div className="page-width">
-            <div className="purpose-intro">
-              <p className="eyebrow eyebrow-light"><span /> Our purpose</p>
-              <h2>A child&apos;s future should not be <em>decided by poverty.</em></h2>
-              <p>We believe education can open doors when it is rooted in care, respect, and possibility. We want every child to have the confidence and opportunity to imagine a better future.</p>
-              <div className="purpose-values" aria-label="Our values">
-                <span>Education</span><i>•</i>
-                <span>Dignity</span><i>•</i>
-                <span>Opportunity</span><i>•</i>
-                <span>Confidence</span><i>•</i>
-                <span>A Better Future</span>
-              </div>
-            </div>
-            <div className="pillar-grid">
-              {pillars.map(({ number, title, text, icon: Icon }) => (
-                <article className="pillar-card" key={title}>
-                  <div className="pillar-top"><span>{number}</span><Icon size={22} strokeWidth={1.6} /></div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="learning-section section-pad">
-          <div className="page-width learning-grid">
-            <div className="learning-copy">
-              <p className="eyebrow"><span /> What we do</p>
-              <h2>Every day is a chance to <em>grow.</em></h2>
-              <p>
-                Pathfinder is an English-medium school following the Madhya Pradesh Board, serving children from Nursery through Class VIII. Learning is supported by a dedicated team of 10 teachers and a community that helps children participate, build confidence, and keep looking ahead.
-              </p>
-              <ul className="learning-list">
-                <li><Check size={17} /> Learning from Nursery to Class VIII</li>
-                <li><Check size={17} /> Madhya Pradesh Board curriculum</li>
-                <li><Check size={17} /> A dedicated team of 10 teachers</li>
-              </ul>
-              <a className="text-link" href="#contact">Talk with our school <ArrowRight size={16} /></a>
-            </div>
-            <div className="learning-image">
-              <img src={image6} alt="Students taking part in a Pathfinder school activity" />
-              <div className="learning-note"><span>Learning with purpose</span><BookOpen size={19} /></div>
-            </div>
-          </div>
-        </section>
-
-        <section className="support-section section-pad" id="support" aria-labelledby="support-heading">
-          <div className="page-width">
-            <div className="support-heading">
-              <div>
-                <p className="eyebrow"><span /> What your support enables</p>
-                <h2 id="support-heading">Your contribution reaches <em>the whole school.</em></h2>
-              </div>
-              <p>Support can reach classrooms, children, and the wider school community in practical ways.</p>
-            </div>
-            <div className="support-grid">
-              {studentSupport.map(({ title, text, icon: Icon }, index) => (
-                <article className="support-card" key={title}>
-                  <div className="support-card-top">
-                    <span>0{index + 1}</span>
-                    <Icon size={20} strokeWidth={1.7} />
+                  <span className="timeline-year">{year}</span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
                   </div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
+                </motion.article>
               ))}
             </div>
-            <p className="support-note">
-              A small contribution becomes meaningful when it reaches the whole school community. For current needs and ways to help, please <a href="#contact">contact the school</a>.
-            </p>
           </div>
         </section>
 
-        <section className="financial-section section-pad" id="financial-need">
-          <div className="page-width">
-            <div className="financial-heading">
-              <p className="eyebrow"><span /> Financial need</p>
-              <h2>A transparent view of the school&apos;s <em>core annual requirement.</em></h2>
-              <p>The following estimates are reproduced from the supplied school materials. Please contact the school to confirm current figures.</p>
+        <section className="section initiatives-section" id="initiatives">
+          <div className="page-shell">
+            <div className="section-header">
+              <span className="eyebrow eyebrow-alt">
+                <span className="eyebrow-dot" />
+                Initiatives / Our Work
+              </span>
+              <h2>
+                Community-led action for <span>education and dignity.</span>
+              </h2>
             </div>
-            <div className="budget-grid">
-              <div className="budget-card">
-                <h3>Monthly operating expenses</h3>
-                <table className="budget-table">
-                  <thead><tr><th scope="col">Particulars</th><th scope="col">Monthly cost</th></tr></thead>
-                  <tbody>
-                    {monthlyExpenses.map(([item, amount]) => <tr key={item}><td>{item}</td><td>{amount}</td></tr>)}
-                  </tbody>
-                  <tfoot><tr><th scope="row">Total per month</th><th>₹76,850</th></tr></tfoot>
-                </table>
-                <p className="budget-annual-note">Core operating expenses per year: <strong>₹9,22,200</strong></p>
-              </div>
-              <div className="budget-card budget-card-education">
-                <h3>Annual educational expenses</h3>
-                <table className="budget-table">
-                  <thead><tr><th scope="col">Particulars</th><th scope="col">Approx. annual cost</th></tr></thead>
-                  <tbody>
-                    {annualExpenses.map(([item, amount]) => <tr key={item}><td>{item}</td><td>{amount}</td></tr>)}
-                  </tbody>
-                  <tfoot><tr><th scope="row">Total</th><th>₹3,50,500–₹3,55,500</th></tr></tfoot>
-                </table>
-              </div>
+
+            <div className="initiative-list">
+              {initiatives.map(({ title, kicker, theme, image, summary, points }, index) => (
+                <motion.article
+                  className={`initiative-panel initiative-${theme} ${index % 2 === 1 ? 'initiative-panel--reverse' : ''}`}
+                  key={title}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.55, delay: index * 0.05 }}
+                >
+                  <div className="initiative-media">
+                    <img src={image} alt={title} loading="lazy" />
+                  </div>
+
+                  <div className="initiative-content">
+                    <span className="initiative-kicker">{kicker}</span>
+                    <h3>{title}</h3>
+                    <p>{summary}</p>
+                    <ul>
+                      {points.map((point) => (
+                        <li key={point}><Check size={16} /> {point}</li>
+                      ))}
+                    </ul>
+                    <a href="#contact" className="text-link">
+                      Learn More
+                      <ChevronRight size={15} />
+                    </a>
+                  </div>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="funding-section section-pad" id="funding-gap" aria-labelledby="funding-heading">
-          <div className="page-width funding-layout">
-            <div className="funding-copy">
-              <p className="eyebrow eyebrow-light"><span /> The annual funding gap</p>
-              <h2 id="funding-heading">An estimated <em>₹14.75 lakh</em> annual requirement.</h2>
-              <p>Beyond routine costs, the school materials identify support needs across core operations, education, and additional student and school needs.</p>
-              <div className="funding-per-student">
-                <span>At 350 registered students</span>
-                <strong>~₹4,200 / year</strong>
-                <small>approximately ₹350 per student, per month</small>
+        <section className="section stats-section">
+          <div className="page-shell stats-grid">
+            {stats.map(({ value, label }) => (
+              <div className="stat-card" key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
               </div>
-            </div>
-            <div className="funding-detail">
-              <div className="funding-table" role="table" aria-label="Estimated annual funding requirement">
-                <div className="funding-row funding-row-header" role="row"><span role="columnheader">Budget component</span><span role="columnheader">Annual requirement</span></div>
-                <div className="funding-row" role="row"><span role="cell">Core operating expenses</span><strong role="cell">₹9,22,200</strong></div>
-                <div className="funding-row" role="row"><span role="cell">Educational expenses</span><strong role="cell">₹3,50,500–₹3,55,500</strong></div>
-                <div className="funding-row" role="row"><span role="cell">Maintenance, healthcare &amp; activities</span><strong role="cell">₹2,00,000</strong></div>
-                <div className="funding-row funding-row-total" role="row"><span role="cell">Estimated total</span><strong role="cell">₹14,72,700–₹14,77,700</strong></div>
-              </div>
-              <p className="funding-caveat">
-                The brochure separately mentions an additional ₹2.2 lakh for maintenance, health initiatives, celebrations, competitions, prizes, and student-support activities, while its annual budget table lists ₹2,00,000 for maintenance, healthcare, and activities. Please confirm the current amount and breakdown with the school before pledging.
+            ))}
+          </div>
+        </section>
+
+        <section className="section donate-section" id="donate">
+          <div className="page-shell donate-grid">
+            <motion.div
+              className="donate-visual"
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img src={ekjut5} alt="Children and community members engaging in an EKJUT learning activity" />
+            </motion.div>
+
+            <motion.div
+              className="donate-copy"
+              initial={{ opacity: 0, x: 25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="eyebrow eyebrow-alt">
+                <span className="eyebrow-dot" />
+                Donate Us
+              </span>
+              <h2>
+                Be a Part of Their Journey. <span>Make a Difference.</span>
+              </h2>
+              <p>
+                Your contribution can help us bring education, opportunities, and a brighter future to children and women who need them most.
               </p>
-            </div>
+
+              <div className="donation-cta">
+                <a className="button button-primary" href="#contact">
+                  <HandCoins size={16} />
+                  Donate Now
+                </a>
+              </div>
+
+              <div className="bank-card">
+                <div className="bank-card-head">
+                  <Landmark size={18} />
+                  <span>Bank Details</span>
+                </div>
+                <div className="bank-details" role="table" aria-label="Ekjut bank details">
+                  {bankDetails.map(([label, value]) => (
+                    <div className="bank-row" key={label} role="row">
+                      <span role="cell">{label}</span>
+                      <strong role="cell">{value}</strong>
+                    </div>
+                  ))}
+                </div>
+                <button type="button" className="copy-button" onClick={copyBankDetails}>
+                  <Copy size={15} />
+                  {copied ? 'Copied' : 'Copy Account Details'}
+                </button>
+                <p className="verification-note">
+                  Please verify the banking and tax exemption details with the organization before publishing or relying on them for donation decisions.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        <section className="sponsorship-section section-pad" id="sponsorship">
-          <div className="page-width">
-            <div className="support-heading">
-              <div>
-                <p className="eyebrow"><span /> Sponsorship opportunities</p>
-                <h2>Sponsor a child. Support a school. <em>Build a future.</em></h2>
-              </div>
-              <div className="sponsorship-intro">
-                <p>Your contribution can be directed to the area where it matters most. These indicative amounts are shown in the supplied materials; please confirm current priorities with the school.</p>
-                <a className="text-link" href="#contact">Discuss a contribution <ArrowRight size={16} /></a>
-              </div>
-            </div>
-            <div className="sponsorship-grid">
-              {sponsorshipOptions.map(({ amount, purpose, icon: Icon }) => (
-                <article className="sponsorship-card" key={amount}>
-                  <Icon size={21} strokeWidth={1.7} />
-                  <strong>{amount}</strong>
-                  <span>{purpose}</span>
-                </article>
-              ))}
-            </div>
-            <p className="sponsorship-areas">Donors may support a specific area: teacher salaries · materials · uniforms · healthcare · activities</p>
-          </div>
-        </section>
-
-        <section className="support-section beyond-section section-pad" id="beyond-classroom" aria-labelledby="beyond-heading">
-          <div className="page-width">
-            <div className="support-heading">
-              <div>
-                <p className="eyebrow"><span /> Beyond the classroom</p>
-                <h2 id="beyond-heading">A child&apos;s education is shaped by <em>more than lessons.</em></h2>
-              </div>
-              <p>Health, creativity, participation, and recognition all help children feel supported and ready to learn.</p>
-            </div>
-            <div className="support-grid">
-              {beyondClassroom.map(({ title, text, icon: Icon }, index) => (
-                <article className="support-card" key={title}>
-                  <div className="support-card-top"><span>0{index + 1}</span><Icon size={20} strokeWidth={1.7} /></div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="gallery-section section-pad" id="gallery">
-          <div className="page-width">
-            <div className="gallery-heading">
-              <div>
-                <p className="eyebrow"><span /> A glimpse of school life</p>
-                <h2>Room to learn.<br /><em>Room to dream.</em></h2>
-              </div>
-              <p>Real moments from the Pathfinder community.</p>
-            </div>
-            <div className="gallery-grid">
-              {photos.map((photo, index) => (
-                <figure className={`gallery-image gallery-image-${index + 1}`} key={photo}>
-                  <img src={photo} alt={`Pathfinder school community, moment ${index + 1}`} loading="lazy" />
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="contact-section section-pad" id="contact">
-          <div className="page-width contact-grid">
+        <section className="section contact-section" id="contact">
+          <div className="page-shell contact-grid">
             <div className="contact-copy">
-              <p className="eyebrow"><span /> Get in touch</p>
-              <h2>Let&apos;s make room for <em>possibility.</em></h2>
-              <p>Want to learn more, visit, volunteer, or support the school? We’d be glad to hear from you.</p>
-              <div className="contact-details">
-                <a href="tel:+919755669119"><span>Phone</span>+91 97556 69119</a>
-                <a href="mailto:ekjutsociety@gmail.com"><span>Email</span>ekjutsociety@gmail.com</a>
-                <p><span>Find us</span>BHEL, Govindpura, Bhopal, Madhya Pradesh, India</p>
+              <span className="eyebrow eyebrow-alt">
+                <span className="eyebrow-dot" />
+                Contact Us
+              </span>
+              <h2>
+                Let’s build a more <span>educated and equal future.</span>
+              </h2>
+              <p>
+                We welcome conversations about volunteering, partnerships, donations, and community collaboration.
+              </p>
+
+              <div className="contact-list">
+                <a href="tel:+919000000000">
+                  <Phone size={16} />
+                  <span>Phone</span>
+                  <strong>+91 00000 00000</strong>
+                </a>
+                <a href="mailto:hello@ekjut.org">
+                  <Mail size={16} />
+                  <span>Email</span>
+                  <strong>hello@ekjut.org</strong>
+                </a>
+                <p>
+                  <MapPin size={16} />
+                  <span>Address</span>
+                  <strong>Bhopal, Madhya Pradesh, India</strong>
+                </p>
+              </div>
+
+              <div className="map-placeholder" aria-label="Map placeholder">
+                <span>Location map</span>
+                <strong>Bhopal, MP</strong>
               </div>
             </div>
-            <div className="contact-form-card">
-              <div className="form-heading">
-                <span className="form-mark"><HeartHandshake size={21} /></span>
-                <div><h3>Send us a message</h3><p>We’ll follow up using the contact details you share.</p></div>
+
+            <div className="contact-card">
+              <div className="contact-card-head">
+                <span className="contact-icon"><HeartHandshake size={18} /></span>
+                <div>
+                  <h3>Send us a message</h3>
+                  <p>We’d love to hear from you.</p>
+                </div>
               </div>
-              <form onSubmit={handleSubmit(onSubmit)} noValidate>
+
+              <form onSubmit={handleFormSubmit} className="contact-form">
                 <label>
-                  Your name
-                  <input {...register('name', { required: 'Please enter your name.' })} placeholder="Name" autoComplete="name" />
-                  {errors.name && <span className="field-error">{errors.name.message}</span>}
+                  Name
+                  <input type="text" name="name" placeholder="Your full name" required />
                 </label>
                 <label>
-                  Email address
-                  <input type="email" {...register('email', {
-                    required: 'Please enter your email.',
-                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Enter a valid email address.' },
-                  })} placeholder="you@example.com" autoComplete="email" />
-                  {errors.email && <span className="field-error">{errors.email.message}</span>}
+                  Email
+                  <input type="email" name="email" placeholder="you@example.com" required />
                 </label>
                 <label>
-                  How can we help?
-                  <textarea {...register('message', { required: 'Please write a short message.' })} rows="4" placeholder="I’d like to know more about…" />
-                  {errors.message && <span className="field-error">{errors.message.message}</span>}
+                  Subject
+                  <input type="text" name="subject" placeholder="How can we help?" required />
                 </label>
-                {sent && <p className="form-success" role="status">Thanks for reaching out. Please email us directly at ekjutsociety@gmail.com so we can respond to your message.</p>}
-                <button className="button button-green" type="submit">Send enquiry <ArrowRight size={16} /></button>
-                <p className="form-note">This form does not send data to a server. We’ll show you how to contact us directly after submission.</p>
+                <label>
+                  Message
+                  <textarea name="message" rows="5" placeholder="Write your message here" required />
+                </label>
+
+                <button type="submit" className="button button-primary button-full">
+                  Send Message
+                  <ArrowRight size={16} />
+                </button>
+
+                {submitted && (
+                  <p className="success-message" role="status">
+                    Thanks for your message. This is a frontend-only form and no email has been sent.
+                  </p>
+                )}
               </form>
             </div>
           </div>
@@ -552,8 +521,51 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <div className="page-width footer-inner">
-          <p className="copyright">&copy; Yugnext Private Limited 2026</p>
+        <div className="page-shell footer-grid">
+          <div className="footer-brand">
+            <div className="brand brand-footer">
+              <span className="brand-mark">E</span>
+              <span className="brand-copy">
+                <strong>EKJUT</strong>
+                <small>Empowering communities</small>
+              </span>
+            </div>
+            <p>
+              Together, We Can Create a More Educated, Equal and Empowered Society.
+            </p>
+          </div>
+
+          <div className="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              {navItems.map(({ label, href }) => (
+                <li key={label}><a href={href}>{label}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-column">
+            <h3>Initiatives</h3>
+            <ul>
+              {initiatives.map(({ title }) => (
+                <li key={title}><a href="#initiatives">{title}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-column">
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="mailto:hello@ekjut.org">hello@ekjut.org</a></li>
+              <li><a href="tel:+919000000000">+91 00000 00000</a></li>
+              <li>Bhopal, Madhya Pradesh</li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div className="page-shell">
+            <span>© Yugnext Private Limited 2026. All rights reserved.</span>
+          </div>
         </div>
       </footer>
     </div>
