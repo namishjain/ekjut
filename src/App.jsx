@@ -29,8 +29,8 @@ const navigation = [
   ['About Us', '#about'],
   ['Our Impact', '#impact'],
   ['What We Do', '#purpose'],
+  ['Financial Need', '#financial-need'],
   ['Gallery', '#gallery'],
-  ['Transparency', '#transparency'],
   ['Contact', '#contact'],
 ]
 
@@ -61,6 +61,94 @@ const pillars = [
     title: 'Opportunity',
     text: 'A stronger foundation for children to imagine a future beyond the limits of poverty.',
     icon: Sparkles,
+  },
+]
+
+const studentSupport = [
+  {
+    title: 'Quality education',
+    text: 'English-medium learning and foundational academic support.',
+    icon: BookOpen,
+  },
+  {
+    title: 'Learning materials',
+    text: 'Syllabi, stationery, classroom supplies, and creative materials for learning.',
+    icon: BookOpen,
+  },
+  {
+    title: 'Uniforms',
+    text: 'Helping children come to school with dignity and confidence.',
+    icon: GraduationCap,
+  },
+  {
+    title: 'Student healthcare',
+    text: 'Health check-ups, including eye, dental, and haemoglobin screening initiatives.',
+    icon: Heart,
+  },
+  {
+    title: 'Activities',
+    text: 'Creative, cultural, sports, and educational experiences.',
+    icon: Sparkles,
+  },
+  {
+    title: 'A safe school',
+    text: 'Maintenance and essential school operations for a safe learning environment.',
+    icon: ShieldCheck,
+  },
+]
+
+const monthlyExpenses = [
+  ['Teachers (10)', '₹65,000'],
+  ['School buses (2)', '₹4,700'],
+  ['Sweeper (1)', '₹2,500'],
+  ['Electricity and water', '₹2,500'],
+  ['Cleaning supplies', '₹1,200'],
+  ['Chalk, pens, pencils, colours, etc.', '₹950'],
+]
+
+const annualExpenses = [
+  ['Student syllabus / educational material', '₹2,45,000'],
+  ['Uniforms', '₹48,000'],
+  ['Office expenses', '₹20,000'],
+  ['Stationery', '₹15,000–₹20,000'],
+  ['Lease', '₹12,500'],
+  ['Activities / educational outings', '₹10,000'],
+]
+
+const sponsorshipOptions = [
+  { amount: '₹5,000', purpose: 'Learning and educational support', icon: BookOpen },
+  { amount: '₹10,000', purpose: 'Materials, uniforms, and activities', icon: GraduationCap },
+  { amount: '₹25,000', purpose: 'Support for a group of students', icon: Users },
+  { amount: '₹50,000', purpose: 'Classroom and student-support needs', icon: ShieldCheck },
+  { amount: '₹1,00,000', purpose: 'A significant contribution to annual needs', icon: Heart },
+  { amount: '₹2,00,000', purpose: 'Maintenance, healthcare, and activities', icon: Sparkles },
+]
+
+const beyondClassroom = [
+  {
+    title: 'School maintenance',
+    text: 'Furniture repairs, drainage cleaning, electrical and plumbing work, and general upkeep.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Student healthcare',
+    text: 'Health check-up camps, eye examinations, dental check-ups, and haemoglobin testing.',
+    icon: Heart,
+  },
+  {
+    title: 'National and cultural celebrations',
+    text: 'Independence Day, Republic Day, and educational or cultural celebrations.',
+    icon: Users,
+  },
+  {
+    title: 'Creative competitions',
+    text: 'Rangoli, Mehendi, fancy dress, art, and other activities.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Prizes and recognition',
+    text: 'Certificates, prizes, and encouragement for participation and achievement.',
+    icon: GraduationCap,
   },
 ]
 
@@ -95,7 +183,7 @@ function App() {
             {navigation.map(([label, href]) => (
               <a key={href} href={href}>{label}</a>
             ))}
-            <a className="nav-cta" href="#contact">Support our school <ArrowRight size={15} /></a>
+            <a className="nav-cta" href="#sponsorship">Support our school <ArrowRight size={15} /></a>
           </div>
 
           <button
@@ -113,7 +201,7 @@ function App() {
             {navigation.map(([label, href]) => (
               <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
             ))}
-            <a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>
+            <a className="nav-cta" href="#sponsorship" onClick={() => setMenuOpen(false)}>
               Support our school <ArrowRight size={15} />
             </a>
           </div>
@@ -137,7 +225,7 @@ function App() {
               </p>
               <div className="hero-actions">
                 <a className="button button-green" href="#about">Discover our mission <ArrowRight size={17} /></a>
-                <a className="button button-outline" href="#contact">Support our school</a>
+                <a className="button button-outline" href="#sponsorship">Support our school</a>
               </div>
               <div className="hero-location"><span /> BHEL, Govindpura · Bhopal, Madhya Pradesh</div>
             </motion.div>
@@ -208,6 +296,11 @@ function App() {
               <p>
                 We work to create a supportive place where children can learn, participate, build confidence, and prepare for a better future—regardless of the circumstances they were born into.
               </p>
+              <div className="school-facts" aria-label="School facts">
+                <span><strong>Medium</strong>English</span>
+                <span><strong>Board</strong>Madhya Pradesh Board</span>
+                <span><strong>Classes</strong>Nursery–VIII</span>
+              </div>
               <a className="text-link" href="#purpose">Explore our purpose <ArrowRight size={16} /></a>
             </div>
           </div>
@@ -218,7 +311,14 @@ function App() {
             <div className="purpose-intro">
               <p className="eyebrow eyebrow-light"><span /> Our purpose</p>
               <h2>A child&apos;s future should not be <em>decided by poverty.</em></h2>
-              <p>We believe education can open doors when it is rooted in care, respect, and possibility.</p>
+              <p>We believe education can open doors when it is rooted in care, respect, and possibility. We want every child to have the confidence and opportunity to imagine a better future.</p>
+              <div className="purpose-values" aria-label="Our values">
+                <span>Education</span><i>•</i>
+                <span>Dignity</span><i>•</i>
+                <span>Opportunity</span><i>•</i>
+                <span>Confidence</span><i>•</i>
+                <span>A Better Future</span>
+              </div>
             </div>
             <div className="pillar-grid">
               {pillars.map(({ number, title, text, icon: Icon }) => (
@@ -238,7 +338,7 @@ function App() {
               <p className="eyebrow"><span /> What we do</p>
               <h2>Every day is a chance to <em>grow.</em></h2>
               <p>
-                From Nursery through Class VIII, Pathfinder offers English-medium learning in a community that helps children participate, build confidence, and keep looking ahead.
+                Pathfinder is an English-medium school following the Madhya Pradesh Board, serving children from Nursery through Class VIII. Learning is supported by a dedicated team of 10 teachers and a community that helps children participate, build confidence, and keep looking ahead.
               </p>
               <ul className="learning-list">
                 <li><Check size={17} /> Learning from Nursery to Class VIII</li>
@@ -250,6 +350,139 @@ function App() {
             <div className="learning-image">
               <img src={image6} alt="Students taking part in a Pathfinder school activity" />
               <div className="learning-note"><span>Learning with purpose</span><BookOpen size={19} /></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="support-section section-pad" id="support" aria-labelledby="support-heading">
+          <div className="page-width">
+            <div className="support-heading">
+              <div>
+                <p className="eyebrow"><span /> What your support enables</p>
+                <h2 id="support-heading">Your contribution reaches <em>the whole school.</em></h2>
+              </div>
+              <p>Support can reach classrooms, children, and the wider school community in practical ways.</p>
+            </div>
+            <div className="support-grid">
+              {studentSupport.map(({ title, text, icon: Icon }, index) => (
+                <article className="support-card" key={title}>
+                  <div className="support-card-top">
+                    <span>0{index + 1}</span>
+                    <Icon size={20} strokeWidth={1.7} />
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+            <p className="support-note">
+              A small contribution becomes meaningful when it reaches the whole school community. For current needs and ways to help, please <a href="#contact">contact the school</a>.
+            </p>
+          </div>
+        </section>
+
+        <section className="financial-section section-pad" id="financial-need">
+          <div className="page-width">
+            <div className="financial-heading">
+              <p className="eyebrow"><span /> Financial need</p>
+              <h2>A transparent view of the school&apos;s <em>core annual requirement.</em></h2>
+              <p>The following estimates are reproduced from the supplied school materials. Please contact the school to confirm current figures.</p>
+            </div>
+            <div className="budget-grid">
+              <div className="budget-card">
+                <h3>Monthly operating expenses</h3>
+                <table className="budget-table">
+                  <thead><tr><th scope="col">Particulars</th><th scope="col">Monthly cost</th></tr></thead>
+                  <tbody>
+                    {monthlyExpenses.map(([item, amount]) => <tr key={item}><td>{item}</td><td>{amount}</td></tr>)}
+                  </tbody>
+                  <tfoot><tr><th scope="row">Total per month</th><th>₹76,850</th></tr></tfoot>
+                </table>
+                <p className="budget-annual-note">Core operating expenses per year: <strong>₹9,22,200</strong></p>
+              </div>
+              <div className="budget-card budget-card-education">
+                <h3>Annual educational expenses</h3>
+                <table className="budget-table">
+                  <thead><tr><th scope="col">Particulars</th><th scope="col">Approx. annual cost</th></tr></thead>
+                  <tbody>
+                    {annualExpenses.map(([item, amount]) => <tr key={item}><td>{item}</td><td>{amount}</td></tr>)}
+                  </tbody>
+                  <tfoot><tr><th scope="row">Total</th><th>₹3,50,500–₹3,55,500</th></tr></tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="funding-section section-pad" id="funding-gap" aria-labelledby="funding-heading">
+          <div className="page-width funding-layout">
+            <div className="funding-copy">
+              <p className="eyebrow eyebrow-light"><span /> The annual funding gap</p>
+              <h2 id="funding-heading">An estimated <em>₹14.75 lakh</em> annual requirement.</h2>
+              <p>Beyond routine costs, the school materials identify support needs across core operations, education, and additional student and school needs.</p>
+              <div className="funding-per-student">
+                <span>At 350 registered students</span>
+                <strong>~₹4,200 / year</strong>
+                <small>approximately ₹350 per student, per month</small>
+              </div>
+            </div>
+            <div className="funding-detail">
+              <div className="funding-table" role="table" aria-label="Estimated annual funding requirement">
+                <div className="funding-row funding-row-header" role="row"><span role="columnheader">Budget component</span><span role="columnheader">Annual requirement</span></div>
+                <div className="funding-row" role="row"><span role="cell">Core operating expenses</span><strong role="cell">₹9,22,200</strong></div>
+                <div className="funding-row" role="row"><span role="cell">Educational expenses</span><strong role="cell">₹3,50,500–₹3,55,500</strong></div>
+                <div className="funding-row" role="row"><span role="cell">Maintenance, healthcare &amp; activities</span><strong role="cell">₹2,00,000</strong></div>
+                <div className="funding-row funding-row-total" role="row"><span role="cell">Estimated total</span><strong role="cell">₹14,72,700–₹14,77,700</strong></div>
+              </div>
+              <p className="funding-caveat">
+                The brochure separately mentions an additional ₹2.2 lakh for maintenance, health initiatives, celebrations, competitions, prizes, and student-support activities, while its annual budget table lists ₹2,00,000 for maintenance, healthcare, and activities. Please confirm the current amount and breakdown with the school before pledging.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="sponsorship-section section-pad" id="sponsorship">
+          <div className="page-width">
+            <div className="support-heading">
+              <div>
+                <p className="eyebrow"><span /> Sponsorship opportunities</p>
+                <h2>Sponsor a child. Support a school. <em>Build a future.</em></h2>
+              </div>
+              <div className="sponsorship-intro">
+                <p>Your contribution can be directed to the area where it matters most. These indicative amounts are shown in the supplied materials; please confirm current priorities with the school.</p>
+                <a className="text-link" href="#contact">Discuss a contribution <ArrowRight size={16} /></a>
+              </div>
+            </div>
+            <div className="sponsorship-grid">
+              {sponsorshipOptions.map(({ amount, purpose, icon: Icon }) => (
+                <article className="sponsorship-card" key={amount}>
+                  <Icon size={21} strokeWidth={1.7} />
+                  <strong>{amount}</strong>
+                  <span>{purpose}</span>
+                </article>
+              ))}
+            </div>
+            <p className="sponsorship-areas">Donors may support a specific area: teacher salaries · materials · uniforms · healthcare · activities</p>
+          </div>
+        </section>
+
+        <section className="support-section beyond-section section-pad" id="beyond-classroom" aria-labelledby="beyond-heading">
+          <div className="page-width">
+            <div className="support-heading">
+              <div>
+                <p className="eyebrow"><span /> Beyond the classroom</p>
+                <h2 id="beyond-heading">A child&apos;s education is shaped by <em>more than lessons.</em></h2>
+              </div>
+              <p>Health, creativity, participation, and recognition all help children feel supported and ready to learn.</p>
+            </div>
+            <div className="support-grid">
+              {beyondClassroom.map(({ title, text, icon: Icon }, index) => (
+                <article className="support-card" key={title}>
+                  <div className="support-card-top"><span>0{index + 1}</span><Icon size={20} strokeWidth={1.7} /></div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -269,22 +502,6 @@ function App() {
                   <img src={photo} alt={`Pathfinder school community, moment ${index + 1}`} loading="lazy" />
                 </figure>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="transparency-section section-pad" id="transparency">
-          <div className="page-width transparency-grid">
-            <div>
-              <p className="eyebrow eyebrow-light"><span /> Financial transparency</p>
-              <h2>Trust grows when we share <em>what matters.</em></h2>
-            </div>
-            <div className="transparency-copy">
-              <ShieldCheck size={30} strokeWidth={1.5} />
-              <p>
-                Pathfinder is an initiative of Ekjut Society. For current financial information, donation details, or supporting documents, please contact the school directly. We want every supporter to have clear, accurate information before making a contribution.
-              </p>
-              <a className="button button-cream" href="mailto:ekjutsociety@gmail.com">Request information <ArrowRight size={16} /></a>
             </div>
           </div>
         </section>
@@ -336,12 +553,7 @@ function App() {
 
       <footer className="site-footer">
         <div className="page-width footer-inner">
-          <a className="brand footer-brand" href="#home">
-            <span className="brand-mark">P</span>
-            <span className="brand-copy"><strong>Pathfinder English Medium School</strong><small>An initiative of Ekjut Society</small></span>
-          </a>
-          <p>Let&apos;s Give Education a Purpose.</p>
-          <a href="#home" className="back-top">Back to top ↑</a>
+          <p className="copyright">&copy; Yugnext Private Limited 2026</p>
         </div>
       </footer>
     </div>

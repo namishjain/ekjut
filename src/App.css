@@ -556,6 +556,32 @@ h2 em {
   margin-top: 14px;
 }
 
+.school-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 25px;
+  padding: 17px 0;
+  border-top: 1px solid rgba(11, 64, 43, 0.16);
+  border-bottom: 1px solid rgba(11, 64, 43, 0.16);
+}
+
+.school-facts span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--deep);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.school-facts strong {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -602,6 +628,24 @@ h2 em {
   color: rgba(255, 245, 229, 0.72);
   font-size: 14px;
   line-height: 1.8;
+}
+
+.purpose-values {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 27px;
+  color: #f0c27e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.purpose-values i {
+  color: var(--saffron);
+  font-style: normal;
 }
 
 .pillar-grid {
@@ -704,6 +748,399 @@ h2 em {
   color: var(--deep);
   font-family: var(--serif);
   font-size: 17px;
+}
+
+.support-section {
+  background: #fffaf2;
+}
+
+.support-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: 35px;
+}
+
+.support-heading h2 {
+  max-width: 620px;
+  margin: 0;
+  color: var(--deep);
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.7vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.03;
+}
+
+.support-heading h2 em {
+  color: var(--terra);
+  font-weight: 400;
+}
+
+.support-heading > p {
+  max-width: 290px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.support-card {
+  min-height: 205px;
+  padding: 22px;
+  border: 1px solid rgba(11, 64, 43, 0.13);
+  background: var(--cream);
+}
+
+.support-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--green);
+}
+
+.support-card-top span {
+  color: var(--terra);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.support-card h3 {
+  margin: 27px 0 8px;
+  color: var(--deep);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.support-card p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.support-note {
+  margin-top: 19px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.support-note a {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.financial-section {
+  background: #f6ebda;
+}
+
+.financial-heading {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+
+.financial-heading h2 {
+  margin: 0;
+  color: var(--deep);
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.7vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.03;
+}
+
+.financial-heading h2 em {
+  color: var(--terra);
+  font-weight: 400;
+}
+
+.financial-heading > p:last-child {
+  max-width: 560px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 18px;
+}
+
+.budget-card {
+  overflow: hidden;
+  border: 1px solid rgba(11, 64, 43, 0.14);
+  background: #fffaf2;
+}
+
+.budget-card h3 {
+  margin: 0;
+  padding: 16px 19px;
+  background: var(--deep);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.budget-card-education h3 {
+  background: #a64e2f;
+}
+
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--ink);
+  font-size: 10px;
+  text-align: left;
+}
+
+.budget-table th,
+.budget-table td {
+  padding: 10px 12px;
+  border: 1px solid rgba(11, 64, 43, 0.12);
+  line-height: 1.45;
+}
+
+.budget-table thead {
+  background: rgba(20, 91, 55, 0.08);
+  color: var(--deep);
+}
+
+.budget-card-education .budget-table thead {
+  background: rgba(198, 83, 61, 0.08);
+  color: #773822;
+}
+
+.budget-table th:last-child,
+.budget-table td:last-child {
+  width: 39%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.budget-table tbody tr:nth-child(even) {
+  background: rgba(244, 232, 211, 0.38);
+}
+
+.budget-table tfoot {
+  background: var(--green);
+  color: var(--cream);
+}
+
+.budget-card-education .budget-table tfoot {
+  background: #a64e2f;
+}
+
+.budget-annual-note {
+  margin: 0;
+  padding: 13px 15px;
+  border-top: 1px solid rgba(11, 64, 43, 0.12);
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.budget-annual-note strong {
+  color: var(--deep);
+}
+
+.funding-section {
+  background: var(--deep);
+  color: var(--cream);
+}
+
+.funding-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.funding-copy h2 {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+.funding-copy h2 em {
+  color: #e8a759;
+  font-weight: 400;
+}
+
+.funding-copy > p:not(.eyebrow) {
+  margin-top: 18px;
+  color: rgba(255, 245, 229, 0.75);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.funding-per-student {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-top: 26px;
+  padding-left: 14px;
+  border-left: 2px solid var(--saffron);
+}
+
+.funding-per-student span,
+.funding-per-student small {
+  color: rgba(255, 245, 229, 0.68);
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.funding-per-student strong {
+  color: #f1bd6e;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.funding-detail {
+  min-width: 0;
+}
+
+.funding-table {
+  border: 1px solid rgba(255, 245, 229, 0.18);
+}
+
+.funding-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 13px 15px;
+  border-bottom: 1px solid rgba(255, 245, 229, 0.14);
+  color: rgba(255, 245, 229, 0.84);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.funding-row:last-child {
+  border-bottom: 0;
+}
+
+.funding-row > :last-child {
+  text-align: right;
+}
+
+.funding-row-header {
+  background: rgba(255, 245, 229, 0.1);
+  color: var(--cream);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.funding-row-total {
+  background: var(--green);
+  color: var(--cream);
+  font-weight: 800;
+}
+
+.funding-caveat {
+  margin: 13px 0 0;
+  color: rgba(255, 245, 229, 0.62);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.sponsorship-section {
+  background: var(--cream);
+}
+
+.sponsorship-intro {
+  max-width: 320px;
+}
+
+.sponsorship-intro > p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.sponsorship-intro .text-link {
+  margin-top: 13px;
+}
+
+.sponsorship-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sponsorship-card {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid rgba(11, 64, 43, 0.13);
+  background: #fffaf2;
+}
+
+.sponsorship-card > svg {
+  color: var(--green);
+}
+
+.sponsorship-card strong {
+  margin-top: 13px;
+  color: var(--deep);
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.sponsorship-card span {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.sponsorship-areas {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.beyond-section {
+  background: #f6ebda;
+}
+
+.beyond-section .support-card {
+  min-height: 194px;
+}
+
+.beyond-section .support-card:nth-child(4) {
+  grid-column: 2;
+}
+
+.beyond-section .support-card:last-child {
+  grid-column: 3;
 }
 
 .gallery-section {
@@ -957,35 +1394,15 @@ h2 em {
 .footer-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
 }
 
-.footer-brand .brand-mark {
-  width: 36px;
-  height: 36px;
-  flex-basis: 36px;
-  font-size: 19px;
-}
-
-.footer-brand .brand-copy strong {
-  font-size: 15px;
-}
-
-.footer-brand .brand-copy small {
-  font-size: 8px;
-}
-
-.footer-inner > p,
-.back-top {
+.copyright {
+  margin: 0;
   color: var(--muted);
-  font-size: 10px;
-}
-
-.back-top {
-  color: var(--green);
-  font-weight: 800;
-  text-decoration: none;
+  font-size: 12px;
+  text-align: center;
 }
 
 @media (max-width: 1180px) {
@@ -1089,6 +1506,42 @@ h2 em {
   .about-grid,
   .learning-grid {
     gap: 50px;
+  }
+
+  .support-heading {
+    display: block;
+  }
+
+  .support-heading > p {
+    margin-top: 14px;
+  }
+
+  .support-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .support-card,
+  .support-card:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .beyond-section .support-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 6px);
+    justify-self: center;
+  }
+
+  .budget-grid,
+  .funding-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .funding-layout {
+    gap: 38px;
+  }
+
+  .sponsorship-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-photo-wrap {
@@ -1270,6 +1723,14 @@ h2 em {
     gap: 42px;
   }
 
+  .school-facts {
+    gap: 8px;
+  }
+
+  .school-facts span {
+    font-size: 10px;
+  }
+
   .about-photo-wrap {
     height: min(112vw, 430px);
     margin-right: 16px;
@@ -1295,6 +1756,57 @@ h2 em {
     grid-template-columns: 1fr;
     gap: 10px;
     margin-top: 35px;
+  }
+
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .support-card {
+    min-height: auto;
+  }
+
+  .beyond-section .support-card:last-child {
+    grid-column: auto;
+    width: auto;
+  }
+
+  .budget-grid {
+    gap: 13px;
+  }
+
+  .budget-card h3 {
+    padding: 14px;
+    font-size: 9px;
+  }
+
+  .budget-table {
+    font-size: 9px;
+  }
+
+  .budget-table th,
+  .budget-table td {
+    padding: 8px 7px;
+  }
+
+  .budget-table th:last-child,
+  .budget-table td:last-child {
+    width: 43%;
+  }
+
+  .funding-row {
+    padding: 11px 9px;
+    font-size: 9px;
+  }
+
+  .sponsorship-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .sponsorship-card {
+    min-height: 135px;
+    padding: 15px;
   }
 
   .pillar-card {
@@ -1343,10 +1855,6 @@ h2 em {
     flex-wrap: wrap;
   }
 
-  .footer-inner > p {
-    order: 3;
-    width: 100%;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
