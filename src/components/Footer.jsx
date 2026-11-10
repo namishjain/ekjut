@@ -44,7 +44,7 @@ export default function Footer({ navItems, initiatives }) {
       </div>
       <div className="footer-bottom">
         <div className="page-shell">
-          <span>© 2026 EKJUT. All rights reserved.</span>
+          <span>© Yugnnext Private Limited 2026. All rights reserved.</span>
         </div>
       </div>
     </footer>

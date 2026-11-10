@@ -86,6 +86,8 @@ export const initiatives = [
     title: 'Formal School – Pathfinder',
     kicker: 'Quality education',
     theme: 'purple',
+    ctaLabel: 'View Pathfinder',
+    ctaHref: 'https://pathfinder-theta-ten.vercel.app/',
     image: ekjut5,
     summary:
       'Pathfinder reflects EKJUT’s vision of formal, accessible education for underprivileged children in a supportive and inclusive environment.',

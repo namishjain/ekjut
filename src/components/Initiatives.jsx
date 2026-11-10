@@ -16,7 +16,7 @@ export default function Initiatives({ initiatives }) {
         </div>
 
         <div className="initiative-list">
-          {initiatives.map(({ title, kicker, theme, image, summary, points }, index) => (
+          {initiatives.map(({ title, kicker, theme, image, summary, points, ctaLabel = 'Learn More', ctaHref = '#contact' }, index) => (
             <motion.article
               className={`initiative-panel initiative-${theme} ${index % 2 === 1 ? 'initiative-panel--reverse' : ''}`}
               key={title}
@@ -38,8 +38,8 @@ export default function Initiatives({ initiatives }) {
                     <li key={point}><Check size={16} /> {point}</li>
                   ))}
                 </ul>
-                <a href="#contact" className="text-link">
-                  Learn More
+                <a href={ctaHref} className="text-link">
+                  {ctaLabel}
                   <ChevronRight size={15} />
                 </a>
               </div>
