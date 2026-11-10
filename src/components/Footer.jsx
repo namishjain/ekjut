@@ -36,9 +36,10 @@ export default function Footer({ navItems, initiatives }) {
         <div className="footer-column">
           <h3>Contact</h3>
           <ul>
-            <li><a href="mailto:hello@ekjut.org">hello@ekjut.org</a></li>
-            <li><a href="tel:+919000000000">+91 00000 00000</a></li>
-            <li>Bhopal, Madhya Pradesh</li>
+            <li><a href="mailto:ekjutb178@gmail.com">ekjutb178@gmail.com</a></li>
+            <li><a href="tel:+919893355636">+91-9893355636</a></li>
+            <li><a href="tel:+917554296597">07554296597</a></li>
+            <li>Ekjut B-178, Patel Nagar, Raisen Road, Bhopal, M.P. 462021</li>
           </ul>
         </div>
       </div>

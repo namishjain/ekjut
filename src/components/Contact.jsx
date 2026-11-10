@@ -17,20 +17,25 @@ export default function Contact({ submitted, handleFormSubmit }) {
           </p>
 
           <div className="contact-list">
-            <a href="tel:+919000000000">
+            <a href="tel:+919893355636">
+              <Phone size={16} />
+              <span>Mobile</span>
+              <strong>+91-9893355636</strong>
+            </a>
+            <a href="tel:+917554296597">
               <Phone size={16} />
               <span>Phone</span>
-              <strong>+91 00000 00000</strong>
+              <strong>07554296597</strong>
             </a>
-            <a href="mailto:hello@ekjut.org">
+            <a href="mailto:ekjutb178@gmail.com">
               <Mail size={16} />
               <span>Email</span>
-              <strong>hello@ekjut.org</strong>
+              <strong>ekjutb178@gmail.com</strong>
             </a>
             <p>
               <MapPin size={16} />
               <span>Address</span>
-              <strong>Bhopal, Madhya Pradesh, India</strong>
+              <strong>Ekjut B-178, Patel Nagar, Raisen Road, Bhopal, M.P. 462021</strong>
             </p>
           </div>
 
